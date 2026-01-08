@@ -18,7 +18,7 @@ export default function Landing() {
               <div className="p-2.5 bg-gradient-to-br from-emerald-600 to-orange-600 rounded-lg shadow-lg">
                 <FileText className="text-slate-950 font-bold" size={24} />
               </div>
-              <span className="text-2xl font-black text-white">README.ai</span>
+              <span className="text-2xl font-black text-white">ReadmeForge</span>
             </div>
             <Link
               to="/templates"
