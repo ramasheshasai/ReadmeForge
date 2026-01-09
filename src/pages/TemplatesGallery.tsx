@@ -1,5 +1,5 @@
-import { Link } from 'react-router-dom';
-import { Zap, Briefcase, Minimize2, Palette, Code2, ArrowRight, FileText } from 'lucide-react';
+import { Link } from 'react-router-dom'
+import { Zap, Briefcase, Minimize2, Palette, Code2, ArrowRight, FileText, BarChart3 } from 'lucide-react';
 
 const templates = [
   {
@@ -12,6 +12,22 @@ const templates = [
     features: ['Animated typing SVG', 'Colorful badges', 'Neon aesthetics', 'Perfect for creative developers'],
     accentColor: 'emerald',
   },
+  {
+  id: 'product',
+  name: 'Product',
+  description: 'Impact-driven layout focused on metrics, outcomes, and real-world use cases',
+  icon: BarChart3,
+  gradient: 'from-indigo-500 via-emerald-500 to-cyan-500',
+  preview: 'Metrics-first sections, product highlights, clean storytelling',
+  features: [
+    'Impact & metrics sections',
+    'Case-study friendly layout',
+    'Product & startup ready',
+    'Ideal for PMs & founders',
+  ],
+  accentColor: 'indigo',
+},
+
   {
     id: 'professional',
     name: 'Professional',

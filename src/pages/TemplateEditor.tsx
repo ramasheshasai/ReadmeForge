@@ -10,6 +10,7 @@ import {
   generateMinimalistTemplate,
   generateCreativeTemplate,
   generateDeveloperTemplate,
+  generateProductTemplate,
 } from '../utils/templates';
 
 const initialUserData: UserData = {
@@ -39,6 +40,7 @@ const templateInfo = {
   minimalist: { name: 'Minimalist', gradient: 'from-gray-500 to-gray-700' },
   creative: { name: 'Creative', gradient: 'from-orange-500 to-red-600' },
   developer: { name: 'Developer', gradient: 'from-green-500 to-teal-600' },
+  product: { name: 'Product', gradient: 'from-indigo-500 via-emerald-500 to-cyan-500' },
 };
 
 export default function TemplateEditor() {
@@ -50,7 +52,7 @@ export default function TemplateEditor() {
   const [viewMode, setViewMode] = useState<'preview' | 'code'>('preview');
 
   useEffect(() => {
-    if (!templateId || !['neon', 'professional', 'minimalist', 'creative', 'developer'].includes(templateId)) {
+    if (!templateId || !['neon', 'professional', 'minimalist', 'creative', 'developer', 'product'].includes(templateId)) {
       navigate('/templates');
       return;
     }
@@ -72,6 +74,10 @@ export default function TemplateEditor() {
       case 'developer':
         generatedMarkdown = generateDeveloperTemplate(userData);
         break;
+      case 'product':
+  generatedMarkdown = generateProductTemplate(userData);
+  break;
+
     }
     setMarkdown(generatedMarkdown);
   }, [userData, templateId, navigate]);

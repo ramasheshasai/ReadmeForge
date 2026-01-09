@@ -206,6 +206,107 @@ export function generateProfessionalTemplate(data: UserData): string {
 
   return readme;
 }
+export function generateProductTemplate(data: UserData): string {
+  let readme = '';
+
+  readme += `<div align="center">\n\n`;
+  readme += `# ${data.name}\n\n`;
+
+  if (data.tagline) {
+    readme += `**${data.tagline}**\n\n`;
+  }
+
+  readme += `*Building products with impact, clarity, and measurable outcomes.*\n\n`;
+  readme += `</div>\n\n`;
+
+  readme += `---\n\n`;
+
+  if (data.about) {
+    readme += `## 🧠 Product Overview\n\n`;
+    readme += `${data.about}\n\n`;
+  }
+
+  if (data.currentWork || data.location) {
+    readme += `## 📍 Context\n\n`;
+    if (data.currentWork) readme += `- 💼 Currently: ${data.currentWork}\n`;
+    if (data.location) readme += `- 🌍 Location: ${data.location}\n`;
+    readme += `- 📈 Focus: Shipping usable, scalable solutions\n\n`;
+  }
+
+  if (data.skills.filter(Boolean).length > 0) {
+    readme += `## 🎯 Core Strengths\n\n`;
+    data.skills.filter(Boolean).forEach(skill => {
+      readme += `- ${skill}\n`;
+    });
+    readme += `\n`;
+  }
+
+  if (
+    data.languages.filter(Boolean).length > 0 ||
+    data.frameworks.filter(Boolean).length > 0 ||
+    data.tools.filter(Boolean).length > 0
+  ) {
+    readme += `## 🛠️ Product Toolkit\n\n`;
+
+    if (data.languages.filter(Boolean).length > 0) {
+      readme += `**Languages:** ${data.languages.filter(Boolean).join(' • ')}\n\n`;
+    }
+
+    if (data.frameworks.filter(Boolean).length > 0) {
+      readme += `**Frameworks & Libraries:** ${data.frameworks.filter(Boolean).join(' • ')}\n\n`;
+    }
+
+    if (data.tools.filter(Boolean).length > 0) {
+      readme += `**Tools & Platforms:** ${data.tools.filter(Boolean).join(' • ')}\n\n`;
+    }
+  }
+
+  if (data.projects.filter(p => p.name).length > 0) {
+    readme += `## 📦 Case Studies\n\n`;
+    data.projects.filter(p => p.name).forEach(project => {
+      readme += `### ${project.name}\n`;
+      readme += `${project.description}\n\n`;
+      readme += `🔗 ${project.link}\n\n`;
+    });
+  }
+
+  if (data.githubUsername && (data.stats || data.topLanguages)) {
+    readme += `## 📊 Engineering Signals\n\n`;
+    if (data.stats) {
+      readme += `![GitHub Stats](https://github-readme-stats.vercel.app/api?username=${data.githubUsername}&show_icons=true&theme=transparent)\n\n`;
+    }
+    if (data.topLanguages) {
+      readme += `![Top Languages](https://github-readme-stats.vercel.app/api/top-langs/?username=${data.githubUsername}&layout=compact&theme=transparent)\n\n`;
+    }
+  }
+
+  if (
+    data.githubUsername ||
+    data.linkedinUrl ||
+    data.portfolioUrl ||
+    data.email
+  ) {
+    readme += `## 🤝 Let’s Connect\n\n`;
+    if (data.linkedinUrl) {
+      readme += `- 💼 [LinkedIn](${data.linkedinUrl})\n`;
+    }
+    if (data.portfolioUrl) {
+      readme += `- 🌐 [Portfolio](${data.portfolioUrl})\n`;
+    }
+    if (data.githubUsername) {
+      readme += `- 💻 [GitHub](https://github.com/${data.githubUsername})\n`;
+    }
+    if (data.email) {
+      readme += `- ✉️ ${data.email}\n`;
+    }
+    readme += `\n`;
+  }
+
+  readme += `---\n`;
+  readme += `*Focused on outcomes, not just output.*`;
+
+  return readme;
+}
 
 export function generateMinimalistTemplate(data: UserData): string {
   let readme = '';

@@ -77,12 +77,12 @@ export default function Landing() {
                 <div className="w-3 h-3 rounded-full bg-green-500"></div>
               </div>
               <div className="bg-slate-900/80 rounded-lg p-6 font-mono text-sm overflow-x-auto border border-slate-700/50">
-                <div className="text-emerald-400 font-bold"># Hi, I'm John Doe 👋</div>
+                <div className="text-emerald-400 font-bold"># Hi, I'm Rama Shesha Sai👋</div>
                 <div className="text-slate-400 mt-2">
                   ### Full Stack Developer | Problem Solver
                 </div>
                 <div className="text-slate-300 mt-4">
-                  ![GitHub Stats](https://github-readme-stats.vercel.app/api?username=johndoe)
+                  ![GitHub Stats](https://github-readme-stats.vercel.app/api?username=ramasheshasai)
                 </div>
                 <div className="text-orange-400 font-bold mt-4">## 🚀 Skills</div>
                 <div className="text-slate-400 mt-2">
