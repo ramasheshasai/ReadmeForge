@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import { Zap, Briefcase, Minimize2, Palette, Code2, ArrowRight, FileText, BarChart3 } from 'lucide-react';
-
+import { Brain } from 'lucide-react';
 const templates = [
   {
     id: 'neon',
@@ -68,6 +68,22 @@ const templates = [
     features: ['Code aesthetics', 'Dark theme', 'Technical feel', 'Developer friendly'],
     accentColor: 'emerald',
   },
+  {
+  id: 'datascience',
+  name: 'Data Scientist',
+  description: 'Research-driven profile focused on data, models, and measurable insights',
+  icon: Brain,
+  gradient: 'from-indigo-600 via-sky-500 to-emerald-500',
+  preview: 'ML projects, datasets, models, and GitHub analytics',
+  features: [
+    'ML & data-focused sections',
+    'Research & project storytelling',
+    'Clean metrics visualization',
+    'Ideal for AI/ML roles',
+  ],
+  accentColor: 'indigo',
+},
+
 ];
 
 export default function TemplatesGallery() {
@@ -193,7 +209,7 @@ export default function TemplatesGallery() {
         </div>
       </footer>
 
-      <style jsx>{`
+      <style>{`
         @keyframes fade-in {
           from {
             opacity: 0;

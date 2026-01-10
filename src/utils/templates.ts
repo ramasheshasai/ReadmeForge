@@ -307,6 +307,108 @@ export function generateProductTemplate(data: UserData): string {
 
   return readme;
 }
+export function generateDataScienceTemplate(data: UserData): string {
+  let readme = '';
+
+  readme += `<div align="center">\n\n`;
+  readme += `# ${data.name}\n\n`;
+
+  if (data.tagline) {
+    readme += `**${data.tagline}**\n\n`;
+  }
+
+  readme += `*Turning data into insights, models into impact.*\n\n`;
+  readme += `</div>\n\n`;
+
+  readme += `---\n\n`;
+
+  if (data.about) {
+    readme += `## 🧠 About\n\n`;
+    readme += `${data.about}\n\n`;
+  }
+
+  if (data.currentWork || data.location) {
+    readme += `## 📍 Background\n\n`;
+    if (data.currentWork) readme += `- 💼 ${data.currentWork}\n`;
+    if (data.location) readme += `- 🌍 ${data.location}\n`;
+    readme += `- 📊 Focus: Data-driven problem solving\n\n`;
+  }
+
+  if (data.skills.filter(Boolean).length > 0) {
+    readme += `## 🎯 Core Skills\n\n`;
+    data.skills.filter(Boolean).forEach(skill => {
+      readme += `- ${skill}\n`;
+    });
+    readme += `\n`;
+  }
+
+  if (
+    data.languages.filter(Boolean).length > 0 ||
+    data.frameworks.filter(Boolean).length > 0 ||
+    data.tools.filter(Boolean).length > 0
+  ) {
+    readme += `## 🛠️ Tools & Technologies\n\n`;
+
+    if (data.languages.filter(Boolean).length > 0) {
+      readme += `**Languages:** ${data.languages.filter(Boolean).join(' • ')}\n\n`;
+    }
+
+    if (data.frameworks.filter(Boolean).length > 0) {
+      readme += `**Frameworks & Libraries:** ${data.frameworks.filter(Boolean).join(' • ')}\n\n`;
+    }
+
+    if (data.tools.filter(Boolean).length > 0) {
+      readme += `**Platforms & Tools:** ${data.tools.filter(Boolean).join(' • ')}\n\n`;
+    }
+  }
+
+  if (data.projects.filter(p => p.name).length > 0) {
+    readme += `## 📈 Projects & Experiments\n\n`;
+    data.projects.filter(p => p.name).forEach(project => {
+      readme += `### ${project.name}\n`;
+      readme += `${project.description}\n\n`;
+      readme += `🔗 ${project.link}\n\n`;
+    });
+  }
+
+  if (data.githubUsername && (data.stats || data.topLanguages || data.streak)) {
+    readme += `## 📊 GitHub Signals\n\n`;
+    readme += `<div align="center">\n\n`;
+
+    if (data.stats) {
+      readme += `<img src="https://github-readme-stats.vercel.app/api?username=${data.githubUsername}&show_icons=true&theme=transparent" />\n\n`;
+    }
+
+    if (data.topLanguages) {
+      readme += `<img src="https://github-readme-stats.vercel.app/api/top-langs/?username=${data.githubUsername}&layout=compact&theme=transparent" />\n\n`;
+    }
+
+    if (data.streak) {
+      readme += `<img src="https://github-readme-streak-stats.herokuapp.com/?user=${data.githubUsername}&theme=transparent" />\n\n`;
+    }
+
+    readme += `</div>\n\n`;
+  }
+
+  if (
+    data.githubUsername ||
+    data.linkedinUrl ||
+    data.portfolioUrl ||
+    data.email
+  ) {
+    readme += `## 🤝 Connect\n\n`;
+    if (data.linkedinUrl) readme += `- 💼 [LinkedIn](${data.linkedinUrl})\n`;
+    if (data.portfolioUrl) readme += `- 🌐 [Portfolio](${data.portfolioUrl})\n`;
+    if (data.githubUsername) readme += `- 💻 [GitHub](https://github.com/${data.githubUsername})\n`;
+    if (data.email) readme += `- ✉️ ${data.email}\n`;
+    readme += `\n`;
+  }
+
+  readme += `---\n`;
+  readme += `*Data tells a story — I make it useful.*`;
+
+  return readme;
+}
 
 export function generateMinimalistTemplate(data: UserData): string {
   let readme = '';

@@ -25,4 +25,4 @@ export interface Project {
   link: string;
 }
 
-export type TemplateType = 'neon' | 'professional' | 'minimalist' | 'creative' | 'developer';
+export type TemplateType = 'neon' | 'professional' | 'minimalist' | 'creative' | 'developer' | 'product' | 'datascience';

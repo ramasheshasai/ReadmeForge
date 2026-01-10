@@ -11,6 +11,7 @@ import {
   generateCreativeTemplate,
   generateDeveloperTemplate,
   generateProductTemplate,
+  generateDataScienceTemplate,
 } from '../utils/templates';
 
 const initialUserData: UserData = {
@@ -41,6 +42,9 @@ const templateInfo = {
   creative: { name: 'Creative', gradient: 'from-orange-500 to-red-600' },
   developer: { name: 'Developer', gradient: 'from-green-500 to-teal-600' },
   product: { name: 'Product', gradient: 'from-indigo-500 via-emerald-500 to-cyan-500' },
+  datascience: { name: 'Data Scientist', gradient: 'from-indigo-600 via-sky-500 to-emerald-500',
+},
+
 };
 
 export default function TemplateEditor() {
@@ -52,7 +56,7 @@ export default function TemplateEditor() {
   const [viewMode, setViewMode] = useState<'preview' | 'code'>('preview');
 
   useEffect(() => {
-    if (!templateId || !['neon', 'professional', 'minimalist', 'creative', 'developer', 'product'].includes(templateId)) {
+    if (!templateId || !['neon', 'professional', 'minimalist', 'creative', 'developer', 'product','datascience'].includes(templateId)) {
       navigate('/templates');
       return;
     }
@@ -76,6 +80,9 @@ export default function TemplateEditor() {
         break;
       case 'product':
   generatedMarkdown = generateProductTemplate(userData);
+  break;
+  case 'datascience':
+  generatedMarkdown = generateDataScienceTemplate(userData);
   break;
 
     }

@@ -172,7 +172,7 @@ export default function Landing() {
         </div>
       </footer>
 
-      <style jsx>{`
+      <style>{`
         @keyframes fade-in {
           from {
             opacity: 0;
