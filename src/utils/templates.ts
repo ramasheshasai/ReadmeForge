@@ -307,33 +307,44 @@ export function generateProductTemplate(data: UserData): string {
 
   return readme;
 }
+
+
+// --------------------------------------------------------------------------------generateDataScienceTemplate----------------------------------------------
 export function generateDataScienceTemplate(data: UserData): string {
   let readme = '';
 
+  /* HERO */
   readme += `<div align="center">\n\n`;
-  readme += `# ${data.name}\n\n`;
+  readme += `# 🧠 ${data.name}\n\n`;
 
   if (data.tagline) {
-    readme += `**${data.tagline}**\n\n`;
+    readme += `### ${data.tagline}\n\n`;
   }
 
-  readme += `*Turning data into insights, models into impact.*\n\n`;
-  readme += `</div>\n\n`;
+  readme += `*Turning **raw data** into **actionable intelligence** using ML & analytics.*\n\n`;
 
+  if (data.githubUsername) {
+    readme += `![Profile Views](https://komarev.com/ghpvc/?username=${data.githubUsername}&style=flat-square)\n\n`;
+  }
+
+  readme += `</div>\n\n`;
   readme += `---\n\n`;
 
+  /* ABOUT */
   if (data.about) {
-    readme += `## 🧠 About\n\n`;
+    readme += `## 🔍 About Me\n\n`;
     readme += `${data.about}\n\n`;
   }
 
+  /* BACKGROUND */
   if (data.currentWork || data.location) {
-    readme += `## 📍 Background\n\n`;
-    if (data.currentWork) readme += `- 💼 ${data.currentWork}\n`;
-    if (data.location) readme += `- 🌍 ${data.location}\n`;
-    readme += `- 📊 Focus: Data-driven problem solving\n\n`;
+    readme += `## 📌 Background\n\n`;
+    if (data.currentWork) readme += `- 💼 Role: ${data.currentWork}\n`;
+    if (data.location) readme += `- 🌍 Location: ${data.location}\n`;
+    readme += `- 📊 Focus Areas: Machine Learning, Data Analysis, Model Deployment\n\n`;
   }
 
+  /* CORE SKILLS */
   if (data.skills.filter(Boolean).length > 0) {
     readme += `## 🎯 Core Skills\n\n`;
     data.skills.filter(Boolean).forEach(skill => {
@@ -342,12 +353,13 @@ export function generateDataScienceTemplate(data: UserData): string {
     readme += `\n`;
   }
 
+  /* TECH STACK */
   if (
     data.languages.filter(Boolean).length > 0 ||
     data.frameworks.filter(Boolean).length > 0 ||
     data.tools.filter(Boolean).length > 0
   ) {
-    readme += `## 🛠️ Tools & Technologies\n\n`;
+    readme += `## 🛠️ Tech Stack\n\n`;
 
     if (data.languages.filter(Boolean).length > 0) {
       readme += `**Languages:** ${data.languages.filter(Boolean).join(' • ')}\n\n`;
@@ -358,21 +370,23 @@ export function generateDataScienceTemplate(data: UserData): string {
     }
 
     if (data.tools.filter(Boolean).length > 0) {
-      readme += `**Platforms & Tools:** ${data.tools.filter(Boolean).join(' • ')}\n\n`;
+      readme += `**Tools & Platforms:** ${data.tools.filter(Boolean).join(' • ')}\n\n`;
     }
   }
 
+  /* PROJECTS */
   if (data.projects.filter(p => p.name).length > 0) {
     readme += `## 📈 Projects & Experiments\n\n`;
     data.projects.filter(p => p.name).forEach(project => {
-      readme += `### ${project.name}\n`;
+      readme += `### 🚀 ${project.name}\n`;
       readme += `${project.description}\n\n`;
-      readme += `🔗 ${project.link}\n\n`;
+      readme += `🔗 **Repository / Demo:** ${project.link}\n\n`;
     });
   }
 
+  /* GITHUB STATS */
   if (data.githubUsername && (data.stats || data.topLanguages || data.streak)) {
-    readme += `## 📊 GitHub Signals\n\n`;
+    readme += `## 📊 GitHub Activity\n\n`;
     readme += `<div align="center">\n\n`;
 
     if (data.stats) {
@@ -390,13 +404,14 @@ export function generateDataScienceTemplate(data: UserData): string {
     readme += `</div>\n\n`;
   }
 
+  /* CONNECT */
   if (
     data.githubUsername ||
     data.linkedinUrl ||
     data.portfolioUrl ||
     data.email
   ) {
-    readme += `## 🤝 Connect\n\n`;
+    readme += `## 🤝 Let’s Connect\n\n`;
     if (data.linkedinUrl) readme += `- 💼 [LinkedIn](${data.linkedinUrl})\n`;
     if (data.portfolioUrl) readme += `- 🌐 [Portfolio](${data.portfolioUrl})\n`;
     if (data.githubUsername) readme += `- 💻 [GitHub](https://github.com/${data.githubUsername})\n`;
@@ -405,11 +420,12 @@ export function generateDataScienceTemplate(data: UserData): string {
   }
 
   readme += `---\n`;
-  readme += `*Data tells a story — I make it useful.*`;
+  readme += `💡 *Good models predict. Great models create value.*`;
 
   return readme;
 }
 
+// -----------------------------------------------generateMinimalistTemplate--------------------------------------------------------------
 export function generateMinimalistTemplate(data: UserData): string {
   let readme = '';
 
